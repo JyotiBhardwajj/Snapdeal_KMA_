@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Disha · AI Virtual Key Account Manager for Snapdeal sellers</title>
+  <meta name="description" content="Voice-first AI Virtual KAM: talk to Disha about a sales drop. She diagnoses the account, asks the right questions, recommends actions and follows through.">
+  <meta name="theme-color" content="#e40046">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Disha · AI Virtual Key Account Manager for Snapdeal sellers">
+  <meta property="og:description" content="Talk to Disha: she diagnoses a seller's sales drop, asks the right questions, recommends a plan and follows through. Voice-first, English and Hindi.">
+  <meta property="og:url" content="__BASE_URL__">
+  <meta property="og:image" content="__BASE_URL__static/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="/static/css/styles.css?v=1.1.0">
+  <script type="module" src="/static/js/app.js?v=1.1.0"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true">D</span>
+      <div class="brand-text">
+        <span class="brand-name">Disha</span>
+        <span class="brand-sub">AI Virtual Key Account Manager · Snapdeal sellers</span>
+      </div>
+    </div>
+    <p class="topbar-note">Prototype · mock seller data</p>
+  </header>
+
+  <main class="layout">
+    <!-- ============================== Call panel ============================== -->
+    <section class="call-panel" aria-labelledby="call-heading">
+      <h2 id="call-heading" class="visually-hidden">Voice call with Disha</h2>
+
+      <div class="seller-id">
+        <span class="avatar" id="seller-avatar" aria-hidden="true">RG</span>
+        <div class="seller-text">
+          <p class="seller-name" id="seller-name">Rajesh Gupta</p>
+          <p class="seller-meta" id="seller-meta">Gupta Home Essentials · Jaipur</p>
+        </div>
+        <span class="verified" title="Seller verified from registered number">Verified</span>
+      </div>
+
+      <div class="stage" id="stage" data-state="idle">
+        <canvas id="orb" class="orb" width="560" height="560" aria-hidden="true"></canvas>
+        <div class="stage-text" aria-live="polite">
+          <p class="status-label" id="status-label">Ready when you are</p>
+          <p class="status-sub" id="status-sub">Press call and speak naturally, in English or Hindi.</p>
+        </div>
+        <p class="timer" id="call-timer" hidden>00:00</p>
+      </div>
+
+      <div class="call-options" id="call-options">
+        <fieldset class="option-group" id="mode-select">
+          <legend>Who starts the call?</legend>
+          <div class="segmented segmented-3">
+            <label><input type="radio" name="mode" value="inbound" checked><span>Seller calls Disha</span></label>
+            <label><input type="radio" name="mode" value="outbound"><span>Disha calls proactively</span></label>
+            <label><input type="radio" name="mode" value="followup"><span>7&#8209;day follow&#8209;up</span></label>
+          </div>
+        </fieldset>
+        <fieldset class="option-group" id="lang-select">
+          <legend>Language</legend>
+          <div class="segmented">
+            <label><input type="radio" name="lang" value="en" checked><span>English</span></label>
+            <label><input type="radio" name="lang" value="hi"><span lang="hi">हिन्दी</span></label>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="controls">
+        <button type="button" class="btn btn-call" id="call-btn">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1L6.6 10.8Z"/></svg>
+          <span id="call-btn-label">Call Disha</span>
+        </button>
+        <button type="button" class="btn btn-round" id="mute-btn" aria-pressed="false" aria-label="Mute microphone" hidden>
+          <svg class="icon-mic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 14a3 3 0 0 0 3-3V5a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3Zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V21h2v-3.08A7 7 0 0 0 19 11h-2Z"/></svg>
+          <svg class="icon-mic-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 11h-2c0 .74-.16 1.44-.45 2.07l1.47 1.47A6.96 6.96 0 0 0 19 11ZM15 11.17V5a3 3 0 0 0-5.94-.6L15 10.34v.83ZM4.27 3 3 4.27l6 6V11a3 3 0 0 0 4.43 2.63l1.1 1.1A5 5 0 0 1 7 11H5a7 7 0 0 0 6 6.92V21h2v-3.08a6.9 6.9 0 0 0 2.98-1.1L19.73 21 21 19.73 4.27 3Z"/></svg>
+        </button>
+        <button type="button" class="btn btn-end" id="end-btn" aria-label="End call" hidden>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 9c-1.6 0-3.15.25-4.6.72v3.1c0 .4-.23.74-.56.9-.98.49-1.87 1.12-2.66 1.85a1 1 0 0 1-1.41-.02L.29 13.07a1 1 0 0 1 0-1.41C3.34 8.77 7.46 7 12 7s8.66 1.77 11.71 4.66a1 1 0 0 1 0 1.41l-2.48 2.48a1 1 0 0 1-1.41.02 11.3 11.3 0 0 0-2.67-1.85 1 1 0 0 1-.56-.9v-3.1A15 15 0 0 0 12 9Z"/></svg>
+        </button>
+      </div>
+      <button type="button" class="btn btn-followup" id="followup-btn" hidden>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 18l8.5-6L4 6v12Zm9-12v12l8.5-6L13 6Z"/></svg>
+        <span id="followup-btn-label">Fast-forward 7 days: take Disha's follow-up call</span>
+      </button>
+      <p class="hint" id="hint">Tip: use headphones so you can interrupt Disha naturally.</p>
+
+      <div class="try" id="try-hints">
+        <p class="try-label">Try saying</p>
+        <ul class="try-list" id="try-list">
+          <li>“My sales have dropped this month. Can you help?”</li>
+          <li>“Which products are out of stock?”</li>
+          <li>“Should I just cut my prices?”</li>
+          <li lang="hi">“मेरी सेल्स इतनी कम क्यों हो गई?”</li>
+        </ul>
+      </div>
+
+      <section class="transcript" aria-labelledby="transcript-heading">
+        <h3 id="transcript-heading">Live transcript</h3>
+        <ol class="transcript-list" id="transcript-list" aria-live="polite">
+          <li class="transcript-empty">The conversation will appear here as you talk.</li>
+        </ol>
+      </section>
+    </section>
+
+    <!-- ============================== Case file ============================== -->
+    <section class="case-panel" aria-labelledby="case-heading">
+      <header class="case-header">
+        <div>
+          <h1 id="case-heading">Seller case file</h1>
+          <p class="case-sub">Disha builds this live during the call: what she found, what the seller told her, and what she did about it.</p>
+        </div>
+        <p class="case-id" id="case-id" hidden></p>
+      </header>
+
+      <article class="card" id="card-snapshot">
+        <div class="card-head">
+          <h2>Account snapshot</h2>
+          <span class="source">Source: assignment brief</span>
+        </div>
+        <div class="table-wrap">
+          <table class="metrics" id="metrics-table">
+            <thead><tr><th scope="col">Metric</th><th scope="col">Last month</th><th scope="col">This month</th><th scope="col">Change</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </article>
+
+      <article class="card" id="card-progress" hidden>
+        <div class="card-head"><h2><span class="step" aria-hidden="true">1</span>Progress since the last call</h2></div>
+        <div id="progress-body"><p class="empty">Disha reviews last week's targets first.</p></div>
+      </article>
+
+      <article class="card" id="card-diagnosis">
+        <div class="card-head"><h2><span class="step" aria-hidden="true">1</span>Diagnosis</h2></div>
+        <div id="diagnosis-body"><p class="empty">Disha runs the diagnosis as soon as the seller describes the problem.</p></div>
+      </article>
+
+      <article class="card" id="card-insights">
+        <div class="card-head"><h2><span class="step" aria-hidden="true">2</span>What the seller told Disha</h2></div>
+        <div id="insights-body"><p class="empty">Answers to Disha's follow-up questions land here.</p></div>
+      </article>
+
+      <article class="card" id="card-plan">
+        <div class="card-head"><h2><span class="step" aria-hidden="true">3</span>Action plan</h2></div>
+        <div id="plan-body"><p class="empty">2–3 prioritised actions with expected impact, owner and timeline.</p></div>
+      </article>
+
+      <article class="card" id="card-actions">
+        <div class="card-head"><h2><span class="step" aria-hidden="true">4</span>Done on the seller's behalf</h2></div>
+        <div id="actions-body"><p class="empty">Actions Disha executes with permission, and the follow-up she books.</p></div>
+      </article>
+
+      <article class="card card-summary" id="card-summary" hidden>
+        <div class="card-head">
+          <h2>Call summary</h2>
+          <button type="button" class="btn btn-ghost" id="download-btn">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16 7 11l1.4-1.4 2.6 2.58V4h2v8.18l2.6-2.58L17 11l-5 5Zm-7 4v-2h14v2H5Z"/></svg>
+            Download
+          </button>
+        </div>
+        <div id="summary-body"></div>
+      </article>
+
+      <details class="card disclosure" id="activity-card">
+        <summary><h2>Agent activity</h2><span class="count" id="activity-count">No tool calls yet</span></summary>
+        <ol class="activity-list" id="activity-list"></ol>
+      </details>
+
+      <details class="card disclosure">
+        <summary><h2>Data &amp; assumptions</h2></summary>
+        <ul class="assumptions" id="assumptions-list"></ul>
+        <p class="footnote" id="model-note"></p>
+      </details>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" hidden></div>
+</body>
+</html>
