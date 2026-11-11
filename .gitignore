@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+
+# Deployment state (resource names created by scripts/deploy.sh)
+.deploy/
+
+# Recordings and scratch output
+*.wav
+*.webm
+*.mp4
+recordings/
+
+# Editors / OS
+.idea/
+.vscode/
+.DS_Store
+
+# Raw evaluation output (the report and transcripts are committed instead)
+evals/results/results.json

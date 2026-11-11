@@ -1,0 +1,15 @@
+# Files uploaded to Cloud Build (mirror .dockerignore; keep secrets and local state out).
+.git
+.gitignore
+.venv/
+.env
+.env.*
+.deploy/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+tests/
+evals/
+docs/
+*.wav
